@@ -17,6 +17,11 @@ namespace ToDo.Models
         {
         }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ToDoContext, Migrations.Configuration>());
+        }
+
         public DbSet<ToDoItem> ToDoItems { get; set; }
 
         public DbSet<User> Users { get; set; }
